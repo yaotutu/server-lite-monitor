@@ -1,5 +1,9 @@
+'use client'
+import React from 'react'
 export default function Home() {
   return (
-    <h1>home  </h1>
+    <div className='text-6xl flex justify-center h-screen items-center'>
+      Welcome to nextjs
+    </div>
   )
 }
