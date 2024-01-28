@@ -1,13 +1,12 @@
 'use client'
 import React, { useEffect } from 'react'
-import { getSystemStaicInfo } from '../lib/systeminfo';
+import { getCpuCurrentLoad } from '../lib/systeminfo';
 
 export default function SysteminfoPage() {
 
   useEffect(() => {
-    console.log("run====>", window)
 
-    getSystemStaicInfo().then((data) => {
+    getCpuCurrentLoad().then((data:any) => {
       console.log(data);
     })
   }, [])
