@@ -1,16 +1,21 @@
 "use client";
-import { getCpuCurrentLoad } from "@/app/lib/systeminfo/host";
+import {
+  getCpuCurrentLoad,
+  getProcessesSortedByCpuUsage,
+} from "@/app/lib/systeminfo/host";
 import React, { useEffect, useRef, useState } from "react";
-import { ArcGuide, Chart, Interval } from "@antv/f2";
+import { ArcGuide, Axis, Chart, Interval, Line } from "@antv/f2";
 import Canvas from "@antv/f-react";
 
 export default function Page() {
   const intervalRef = useRef<any>(null);
   const [currentCpuLoad, setCurrentCpuLoad] = useState(0);
-  const [data, setdata] = useState([{
-    x: "1",
-    y: 85,
-  }])
+  const [data, setdata] = useState([
+    {
+      time: new Date().getTime(),
+      value: 0,
+    },
+  ]);
   useEffect(() => {
     // 清除之前的定时器
     if (intervalRef.current) {
@@ -22,7 +27,21 @@ export default function Page() {
       getCpuCurrentLoad().then((res) => {
         console.log(res);
         setCurrentCpuLoad(res);
-        setdata([{ x: "1", y: res }]);
+        setdata((data) => {
+          if (data.length > 50) {
+            data.shift();
+          }
+          return [
+            ...data,
+            {
+              time: new Date().getTime(),
+              value: res,
+            },
+          ];
+        });
+      });
+      getProcessesSortedByCpuUsage().then((res) => {
+        console.log(res)
       });
     }, 1000);
     // 在组件卸载时清除定时器
@@ -31,44 +50,16 @@ export default function Page() {
     };
   }, []);
 
-  
   return (
     <div>
       <ul>
         <li>当前负载:{currentCpuLoad}</li>
       </ul>
       <Canvas>
-        <Chart
-          data={data}
-          coord={{
-            type: "polar",
-            transposed: true,
-            innerRadius: 0.8,
-          }}
-          scale={{
-            y: {
-              max: 100,
-              min: 0,
-            },
-          }}
-        >
-          <ArcGuide
-            records={[
-              {
-                x: 0,
-                y: 0,
-              },
-              {
-                x: 1,
-                y: 99.98,
-              },
-            ]}
-            style={{
-              lineWidth: 11,
-              stroke: "#ccc",
-            }}
-          />
-          <Interval x="x" y="y" />
+        <Chart data={data}>
+          <Axis field="value" />
+          <Axis field="time" type="timeCat" tickCount={5} mask="mm:ss" />
+          <Line x="time" y="value" shape="smooth" />
         </Chart>
       </Canvas>
     </div>
