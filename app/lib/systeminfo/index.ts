@@ -4,10 +4,10 @@ export async function getSystemStaicInfo() {
   return await cpu();
 }
 
-export async function getCpuCurrentLoad() {
+export const getCpuCurrentLoad: ()=> Promise<number> = async () => {
   const cpuLoad = await currentLoad();
   return cpuLoad.currentLoad;
-}
+};
 
 export const getProcessesSortedByCpuUsage = async (options?: {limit?:number}) => {
   const {limit = 5} = options || {};
