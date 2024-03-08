@@ -10,9 +10,11 @@ class HostAdapter implements SystemInfo {
 	}
 }
 
-const systeminfo = new HostAdapter();
 export async function getSystemInfo(): Promise<SystemInfo> {
-    return Promise.resolve(new HostAdapter());
+  const hostAdapter = new HostAdapter();
+    return {
+    getCpuCurrentLoad: await hostAdapter.getCpuCurrentLoad()
+  }
 
 }
 

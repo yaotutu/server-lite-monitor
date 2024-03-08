@@ -1,16 +1,20 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
-import { getCpuCurrentLoad } from "../../lib/systeminfo/hostAdapter";
+import { getSystemInfo,getCpuCurrentLoad } from "../../lib/systeminfo/hostAdapter";
 import { useInterval } from "@/app/lib/hooks";
 
 export default function Page() {
 	const [currentCpuLoad, setCurrentCpuLoad] = useState(0);
 
 	useInterval(() => {
-		getCpuCurrentLoad().then((res) => {
-			setCurrentCpuLoad(res);
-		});
+    getSystemInfo().then((res) => {
+      console.log(res);
+      
+    });
+		// getCpuCurrentLoad().then((res) => {
+		// 	setCurrentCpuLoad(res);
+		// });
 	}, 1000);
 
 	return (
