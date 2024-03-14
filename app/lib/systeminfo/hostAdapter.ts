@@ -1,5 +1,5 @@
 "use server";
-import { cpu, currentLoad, processes } from "systeminformation";
+import { currentLoad } from "systeminformation";
 
 import { SystemInfo } from "./interface";
 
@@ -9,17 +9,6 @@ class HostAdapter implements SystemInfo {
 		return cpuLoad.currentLoad;
 	}
 }
-
-export async function getSystemInfo(): Promise<SystemInfo> {
-  const hostAdapter = new HostAdapter();
-    return {
-    getCpuCurrentLoad: await hostAdapter.getCpuCurrentLoad()
-  }
-
+export async function getHostAdapter() {
+	return new HostAdapter();
 }
-
-export const getCpuCurrentLoad: () => Promise<number> = async () => {
-	const cpuLoad = await currentLoad();
-	return cpuLoad.currentLoad;
-};
-
