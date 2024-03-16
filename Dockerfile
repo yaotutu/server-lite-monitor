@@ -1,30 +1,26 @@
-# 使用Node.js官方提供的镜像作为基础镜像
-FROM node:lts-alpine
-
-# 安装pnpm
-RUN npm install -g pnpm
+# 使用 Node.js 官方镜像作为基础镜像
+FROM node:20
 
 # 设置工作目录
 WORKDIR /app
 
-# 安装Git
-RUN apk update && apk add --no-cache git
+# 复制 package.json 和 pnpm-lock.yaml 文件到容器中
+COPY package.json pnpm-lock.yaml ./
 
-# 从GitHub克隆代码到容器中
-RUN git clone https://github.com/yaotutu/dash-board .
+# 安装 pnpm
+RUN npm install -g pnpm
 
-# 切换到合适的分支
-# RUN git checkout <branch-name>
-
-# 安装项目的依赖包
+# 安装项目依赖
 RUN pnpm install
 
-# 构建项目
+# 复制项目文件到容器中
+COPY . .
+
+# 构建 Next.js 应用
 RUN pnpm run build
 
-# 监听3000端口
+# 暴露容器的端口，根据你的 Next.js 项目配置的端口进行修改
 EXPOSE 3000
 
-# 运行项目
+# 运行 Next.js 应用
 CMD ["pnpm", "start"]
-
