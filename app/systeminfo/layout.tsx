@@ -1,21 +1,24 @@
-import React from 'react'
+import React from "react";
 
-export default function Layout({ children, cpuWiget }: { children: React.ReactNode, cpuWiget: React.ReactNode }) {
-  return (
-
-    <div className='flex flex-row bg-gray-50 w-screen h-screen'>
-      <div className='h-screen w-1/3 bg-green-200'>
-        <div className='h-1/2 bg-yellow-100'>
-          {cpuWiget}
-        </div>
-        <div>network wiget</div>
-      </div>
-      <div className='h-screen w-1/3 bg-red-50'>
-        <div>
-          cpuWiget
-        </div>
-        <div>network wiget</div>
-      </div>
-    </div>
-  )
+export default function Layout({
+	overview,
+}: {
+	children: React.ReactNode;
+	cpuWiget: React.ReactNode;
+	overview: React.ReactNode;
+}) {
+	return (
+		<div
+			className="flex flex-row  w-full h-full bg-cover p-3"
+			style={{
+				backgroundImage: "url(images/bg.jpg)",
+			}}
+		>
+			<div className="h-full w-3/5">{overview}</div>
+			<div className="h-full w-2/5">
+				<div>cpuWiget</div>
+				<div>network wiget</div>
+			</div>
+		</div>
+	);
 }
