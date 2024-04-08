@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 import { getSystemInfo } from "../../lib/systeminfo";
 import { useInterval } from "@/app/lib/hooks";
-import { Card, ProgressBar } from "@tremor/react";
 
 export default function Page() {
 	const [currentCpuLoad, setCurrentCpuLoad] = useState(0);
@@ -24,9 +23,6 @@ export default function Page() {
 			<ul>
 				<li>当前负载:{currentCpuLoad}</li>
 			</ul>
-       <Card className="max-w-sm">
-          <ProgressBar value={currentCpuLoad} />
-        </Card>
 
 		</div>
 	);
