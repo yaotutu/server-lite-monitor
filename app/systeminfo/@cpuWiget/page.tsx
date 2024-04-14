@@ -8,12 +8,15 @@ import { getColorByPercentage } from "@/app/lib/tools";
 
 export default function Page() {
 	const [currentCpuLoad, setCurrentCpuLoad] = useState(0);
+  const [currentCPuSpeed, setCurrentCPuSpeed] = useState(0) 
   const color =  getColorByPercentage(currentCpuLoad);
 	const chartRef = useRef(null);
 
 	useInterval(() => {
 		getSystemInfo().then((res) => {
+      // console.log(res)
 			setCurrentCpuLoad(res.cpuCurrentLoad);
+      setCurrentCPuSpeed(res.cpuCurrentSpeed);
 		});
 	}, 1000);
 
@@ -97,7 +100,7 @@ export default function Page() {
 			<Square
 				title={"CPU Utillsation"}
 				sum={currentCpuLoad}
-				content1={""}
+				content1={currentCPuSpeed}
 				content2={""}
 				chart={renderChart()}
 			/>

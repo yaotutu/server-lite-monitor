@@ -13,8 +13,10 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="zh-cn">
-      <body className="w-screen h-screen ">{children}</body>
+    <html lang="zh-cn" className="w-full h-full">
+      <body className="w-full h-full ">
+        {children}
+      </body>
     </html>
   )
 }
