@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Layout({
-	overview,
+	overview,cpuWiget
 }: {
 	children: React.ReactNode;
 	cpuWiget: React.ReactNode;
@@ -14,7 +14,7 @@ export default function Layout({
 				backgroundImage: "url(images/bg.jpg)",
 			}}
 		>
-			<div className="h-full w-3/5">{overview}</div>
+			<div className="h-full w-3/5">{cpuWiget}</div>
 			<div className="h-full w-2/5">
 				<div>cpuWiget</div>
 				<div>network wiget</div>
