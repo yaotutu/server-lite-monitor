@@ -17,7 +17,7 @@ export default function Square(props: SquareProps) {
 	} = props;
 	return (
 		<div className="aspect-square rounded-lg bg-white h-full opacity-80 p-3 pt-4 flex flex-col">
-			<div className=" text-xs">{title}</div>
+			<div className=" text-[12px]">{title}</div>
 			<div className="text-2xl">{`${sum.toFixed(0)}%`}</div>
 			<div className="flex-grow flex items-center">
 				<div className="w-1/2 h-full">

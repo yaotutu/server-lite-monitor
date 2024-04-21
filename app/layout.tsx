@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function RootLayout({
 
   return (
     <html lang="zh-cn" className="w-full h-full">
-      <body className="w-full h-full ">
+      <body className="w-screen  h-screen " id="app">
         {children}
       </body>
     </html>

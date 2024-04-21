@@ -96,7 +96,9 @@ export default function Page() {
 	};
 
 	return (
-		<div className="h-2/5 w-full flex flex-1 flex-row justify-around">
+    <> 
+
+		<div className="h-[150px] w-[150px] flex flex-1 flex-row justify-around">
 			<Square
 				title={"CPU Utillsation"}
 				sum={currentCpuLoad}
@@ -104,14 +106,7 @@ export default function Page() {
 				content2={""}
 				chart={renderChart()}
 			/>
-			<Square
-				title={"CPU Utillsation"}
-				sum={27}
-				content1={""}
-				content2={""}
-				chart={undefined}
-			/>
-			{/* <Square /> */}
 		</div>
+    </>
 	);
 }
