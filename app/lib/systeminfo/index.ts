@@ -8,6 +8,7 @@ export async function getSystemInfo() {
     return {
     cpuCurrentLoad: await hostAdapter.getCpuCurrentLoad(),
     cpuCurrentSpeed: await hostAdapter.getCpuCurrentSpeed(),
+    dynamicCpuInfo: await hostAdapter.getDynamicCpuInfo(),
   }
 }
 
