@@ -2,6 +2,7 @@
 import autofit from "autofit.js";
 import React, { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import CPUWiget from "../components/size-2x2/CPUWiget";
 
 export default function Layout({
 	cpuWiget,
@@ -48,10 +49,12 @@ export default function Layout({
 				>
 					<div className="h-[380px] w-[380px] flex-shrink-0 flex flex-col justify-center items-center">
 						<div className="w-full h-1/2 flex flex-row justify-center items-center">
-							{cpuWiget} {cpuWiget}
+              <CPUWiget />
+              <CPUWiget />
 						</div>
 						<div className="w-full h-1/2 flex flex-row justify-center items-center">
-							{cpuWiget} {cpuWiget}
+              <CPUWiget />
+              <CPUWiget />
 						</div>
 					</div>
 					<div className="h-[380px] w-[380px] flex-shrink-0 flex flex-col justify-center items-center">

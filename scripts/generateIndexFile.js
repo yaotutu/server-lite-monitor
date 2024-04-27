@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const generateIndexList = ["app/components/base"];
+const generateIndexList = ["app/components/base","app/components/size-2x2"]
 
 function generateIndexFile(relativePath) {
   // 从当前工作目录获取绝对路径

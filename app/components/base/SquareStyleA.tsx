@@ -15,7 +15,7 @@ interface SquareProps {
   }
   chart: React.ReactNode;
 }
-export default function SquareStyleA(props: SquareProps) {
+export function SquareStyleA(props: SquareProps) {
 	const {
     main = { title: "", content: 0 },
     subA = { title: "", content: 0 },
