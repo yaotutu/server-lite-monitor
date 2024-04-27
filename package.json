@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
-    "build": "next build",
-    "start": "next start",
+    "generate-index": "node scripts/generateIndexFile.js",
+    "dev": "pnpm run generate-index && next dev -H 0.0.0.0",
+    "build": "pnpm run generate-index && next build",
+    "start": "pnpm run generate-index && next start",
     "lint": "next lint"
   },
   "dependencies": {
