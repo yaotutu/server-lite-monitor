@@ -40,13 +40,13 @@ export default function Layout({
 			</button>
 			<FullScreen handle={handle} className="w-screen h-screen">
 				<div
-					className="flex flex-row  w-full h-full bg-cover"
+					className="flex flex-row  w-full h-full bg-cover justify-center items-center"
 					style={{
 						backgroundImage: "url(images/bg.jpg)",
 					}}
-          id="dashboard"
+					id="dashboard"
 				>
-					<div className="h-[375px] w-[375px] flex-shrink-0 flex flex-col justify-center items-center">
+					<div className="h-[380px] w-[380px] flex-shrink-0 flex flex-col justify-center items-center">
 						<div className="w-full h-1/2 flex flex-row justify-center items-center">
 							{cpuWiget} {cpuWiget}
 						</div>
@@ -54,7 +54,7 @@ export default function Layout({
 							{cpuWiget} {cpuWiget}
 						</div>
 					</div>
-					<div className="h-full flex-1">
+					<div className="h-[380px] w-[380px] flex-shrink-0 flex flex-col justify-center items-center">
 						<div>cpuWiget</div>
 						<div>network wiget</div>
 					</div>
