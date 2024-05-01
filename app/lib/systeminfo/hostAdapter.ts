@@ -1,5 +1,5 @@
 "use server";
-import { cpuCurrentSpeed, currentLoad } from "systeminformation";
+import { cpuCurrentSpeed, currentLoad, dockerAll, dockerContainerStats, dockerContainers } from "systeminformation";
 import { DynamicCpuInfo, SystemInfo } from "./interface";
 
 class HostAdapter implements SystemInfo {
@@ -16,6 +16,9 @@ class HostAdapter implements SystemInfo {
 		const cpuSpeed = await this.getCpuCurrentSpeed();
 		return { load: cpuLoad, speed: cpuSpeed };
 	}
+  async getDynamicDockerInfo(): Promise<any> {
+    return await  dockerAll()
+  }
 }
 export async function getHostAdapter() {
 	return new HostAdapter();
