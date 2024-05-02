@@ -4,12 +4,17 @@ export interface DynamicCpuInfo {
 	temp?: number;
 }
 export interface DynamicDockerInfo {
+	summary: DockerSummary;
+	details: {
+		[key: string]: DockerContainerStats;
+	};
+}
+export interface DockerSummary {
 	pausedContainers: number;
 	stoppedContainers: number;
 	totalContainers: number;
 	totalImages: number;
 	activeContainers: number;
-	details: any;
 }
 export interface DockerContainerStats {
 	cpuPercent: number;
@@ -30,5 +35,5 @@ export interface SystemInfo {
 	getCpuCurrentLoad: () => Promise<number>;
 	getCpuCurrentSpeed: () => Promise<number>;
 	getDynamicCpuInfo: () => Promise<DynamicCpuInfo>;
-	getDynamicDockerInfo: () => Promise<DynamicCpuInfo>;
+	getDynamicDockerInfo: (containerIds: string[]) => Promise<DynamicCpuInfo>;
 }
