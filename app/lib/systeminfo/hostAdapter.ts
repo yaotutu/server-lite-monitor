@@ -8,11 +8,13 @@ import {
 	dockerInfo,
 } from "systeminformation";
 import { DynamicCpuInfo, DynamicDockerInfo, SystemInfo } from "./interface";
-import { CountingMap } from "../tools";
+import { CountingMap, getLogger } from "../tools";
 
 class HostAdapter implements SystemInfo {
 	private dockerIdToNameMap: CountingMap<string, string>;
-	constructor() {
+	private logger: any;
+	constructor(logger: any) {
+		this.logger = logger;
 		// 使用构造函数初始化变量
 		this.dockerIdToNameMap = new CountingMap<string, string>(100, () =>
 			this.updateData(),
@@ -21,6 +23,9 @@ class HostAdapter implements SystemInfo {
 
 	// 定义更新数据的函数
 	private async updateData() {
+		console.log("updateData");
+		this.logger.info("Docker containers updated");
+
 		const allContainers = await dockerAll();
 		allContainers.forEach((container: any) => {
 			this.dockerIdToNameMap.update(container.name, container.id);
@@ -49,7 +54,8 @@ class HostAdapter implements SystemInfo {
 let cachedHostAdapter: HostAdapter | null = null;
 export async function getHostAdapter() {
 	if (!cachedHostAdapter) {
-		cachedHostAdapter = new HostAdapter(); // 只在第一次创建
+		const loggerInstance = await getLogger();
+		cachedHostAdapter = new HostAdapter(loggerInstance); // 只在第一次创建
 	}
 	return cachedHostAdapter;
 }
