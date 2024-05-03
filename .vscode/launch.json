@@ -5,7 +5,8 @@
       "name": "Next.js: debug server-side",
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run dev"
+      "command": "npm run dev",
+      "runtimeArgs": ["--inspect-brk"], // 使用 --inspect-brk 在开始时断点
     },
     {
       "name": "Next.js: debug client-side",

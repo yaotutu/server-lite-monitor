@@ -3,14 +3,9 @@ import autofit from "autofit.js";
 import React, { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import CPUWiget from "../components/size-2x2/CPUWiget";
+import DockerStatusWiget from "../components/size-4x4/DockerStatusWiget";
 
-export default function Layout({
-	cpuWiget,
-}: {
-	children: React.ReactNode;
-	cpuWiget: React.ReactNode;
-	overview: React.ReactNode;
-}) {
+export default function Layout() {
 	const refreshPage = () => {
 		window.location.reload(); // 刷新当前页面
 	};
@@ -21,6 +16,7 @@ export default function Layout({
 			dw: 667,
 			dh: 375,
 			resize: true,
+			el: "#dashboard",
 		});
 		const handleOrientationChange = () => {
 			// 屏幕旋转时执行的操作
@@ -39,27 +35,45 @@ export default function Layout({
 			<button onClick={handle.enter} className="absolute bottom-0 right-0">
 				Enter fullscreen
 			</button>
-			<FullScreen handle={handle} className="w-screen h-screen">
+			<FullScreen handle={handle} className="w-screen h-screen relative">
 				<div
-					className="flex flex-row  w-full h-full bg-cover justify-center items-center"
+					className="flex flex-row  w-full h-full bg-cover justify-around items-center relative"
 					style={{
 						backgroundImage: "url(images/bg.jpg)",
 					}}
 					id="dashboard"
 				>
-					<div className="h-[380px] w-[380px] flex-shrink-0 flex flex-col justify-center items-center">
-						<div className="w-full h-1/2 flex flex-row justify-center items-center">
-              <CPUWiget />
-              <CPUWiget />
+					{/* <div */}
+					{/* 	className="absolute backdrop-opacity-10 w-[350px] h-[350px] bg-opacity-30 bg-white rounded-lg" */}
+					{/* > */}
+					{/* </div> */}
+					<div className="h-[330px] w-[330px] flex-shrink-0 flex flex-col justify-between items-center relative">
+						{/* <div className="absolute backdrop-opacity-10 w-[340px] h-[360px] bg-opacity-30 bg-white rounded-lg top-[-20px] bottom-[10px]"></div> */}
+						<div
+							className="absolute top-[-20px] text-[12px]"
+							style={{ color: "#b44347" }}
+						>
+							Host Status
 						</div>
-						<div className="w-full h-1/2 flex flex-row justify-center items-center">
-              <CPUWiget />
-              <CPUWiget />
+
+						<div className="w-full  flex flex-row justify-center items-center">
+							<CPUWiget />
+							<CPUWiget />
+						</div>
+						<div className="w-full  flex flex-row justify-center items-center">
+							<CPUWiget />
+							<CPUWiget />
 						</div>
 					</div>
-					<div className="h-[380px] w-[380px] flex-shrink-0 flex flex-col justify-center items-center">
-						<div>cpuWiget</div>
-						<div>network wiget</div>
+					<div className="h-[330px] w-[330px] flex-shrink-0 flex flex-col justify-between items-center px-[10px] relative">
+						{/* <div className="absolute backdrop-opacity-10 w-[340px] h-[360px] bg-opacity-30 bg-white rounded-lg top-[-20px] bottom-[10px]"></div> */}
+						<div
+							className="absolute top-[-20px] text-[12px]"
+							style={{ color: "#b44347" }}
+						>
+							Docker Status
+						</div>
+						<DockerStatusWiget />
 					</div>
 				</div>
 			</FullScreen>
