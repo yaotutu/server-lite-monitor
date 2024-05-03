@@ -1,22 +1,25 @@
 import ReactECharts from "echarts-for-react";
 import { getColorByPercentage } from "../../lib/tools";
+import { CSSProperties } from "react";
 
 export const CircleChart = (props: {
 	load: number;
+	scale?: number;
+  title?: string;
 }) => {
-	const { load } = props;
+	const { load , scale, title=""} = props;
 	const color = getColorByPercentage(load);
 
 	const gaugeData = [
 		{
 			value: load,
-			name: "Perfect",
+			name: title,
 			title: {
-				offsetCenter: ["0%", "-30%"],
+				offsetCenter: ["0%", "0%"],
 			},
 			detail: {
 				valueAnimation: true,
-				offsetCenter: ["0%", "-20%"],
+				offsetCenter: ["0%", "0%"],
 			},
 		},
 	];
@@ -58,7 +61,9 @@ export const CircleChart = (props: {
 				},
 				data: gaugeData,
 				title: {
-					show: false,
+					show: true,
+					fontSize: 10,
+					color: "#b44347",
 				},
 				detail: {
 					show: false,
@@ -66,16 +71,15 @@ export const CircleChart = (props: {
 			},
 		],
 	};
-	return (
-		<ReactECharts
-			option={option}
-			style={{
-				aspectRatio: "1/1",
-				height: "100%",
-				display: "flex",
-				flexDirection: "column",
-				justifyContent: "center",
-			}}
-		/>
-	);
+	const defaultStyle: CSSProperties = {
+		aspectRatio: "1/1",
+		height: "100%",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
+	};
+	const finalStyle: CSSProperties = props.scale
+		? { ...defaultStyle, transform: `scale(${props.scale})` }
+		: defaultStyle;
+	return <ReactECharts option={option} style={finalStyle} />;
 };
