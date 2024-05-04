@@ -5,7 +5,7 @@
 
 一个轻量级的系统监控面板,专为移动端开发, 可以用来监控你的NAS,Linux服务器,OpenWrt等.当然,你也可以用来监控你的windows或者Mac OS.
 
-![主界面](./assets/prview1.png)
+![主界面](./assets/preview2.png)
 
 </div>
 
@@ -18,7 +18,6 @@
 * 监控其他设备(开发中...)
   * 将该项目进行部署,然后通过ssh或者其他方式监控别的设备
   * 比如,将该项目部署在nas中,监控自己的OpenWrt路由器.
-
 ## 安装
 docker部署或者通过node部署. 
 
