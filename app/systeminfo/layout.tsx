@@ -16,7 +16,7 @@ export default function Layout() {
 			dw: 667,
 			dh: 375,
 			resize: true,
-			el: "#dashboard",
+			// el: "#dashboard",
 		});
 		const handleOrientationChange = () => {
 			// 屏幕旋转时执行的操作
@@ -48,7 +48,7 @@ export default function Layout() {
 					{/* > */}
 					{/* </div> */}
 					<div className="h-[330px] w-[330px] flex-shrink-0 flex flex-col justify-between items-center relative">
-						{/* <div className="absolute backdrop-opacity-10 w-[340px] h-[360px] bg-opacity-30 bg-white rounded-lg top-[-20px] bottom-[10px]"></div> */}
+						<div className="absolute backdrop-opacity-10 w-[340px] h-[360px] bg-opacity-30 bg-white rounded-lg top-[-20px] bottom-[10px]"></div>
 						<div
 							className="absolute top-[-20px] text-[12px]"
 							style={{ color: "#b44347" }}
@@ -66,7 +66,7 @@ export default function Layout() {
 						</div>
 					</div>
 					<div className="h-[330px] w-[330px] flex-shrink-0 flex flex-col justify-between items-center px-[10px] relative">
-						{/* <div className="absolute backdrop-opacity-10 w-[340px] h-[360px] bg-opacity-30 bg-white rounded-lg top-[-20px] bottom-[10px]"></div> */}
+						<div className="absolute backdrop-opacity-10 w-[340px] h-[360px] bg-opacity-30 bg-white rounded-lg top-[-20px] bottom-[10px]"></div>
 						<div
 							className="absolute top-[-20px] text-[12px]"
 							style={{ color: "#b44347" }}
