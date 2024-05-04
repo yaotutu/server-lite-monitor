@@ -1,0 +1,7 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  server-lite-monitor:  # 服务名称
+    image: july1995/server-lite-monitor
+    ports:
+      - "3000:3000"
