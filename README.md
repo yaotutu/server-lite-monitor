@@ -3,7 +3,7 @@
 <h1 align="center"><a href="https://github.com/yaotutu/server-lite-monitor"> Server Lite Monitor
 </a></h1>
 
-一个轻量级的系统监控面板,专为移动端开发, 可以用来监控你的NAS,Linux服务器,OpenWrt等.当然,你也可以用来监控你的windows或者Max OS.
+一个轻量级的系统监控面板,专为移动端开发, 可以用来监控你的NAS,Linux服务器,OpenWrt等.当然,你也可以用来监控你的windows或者Mac OS.
 
 ![主界面](./assets/prview1.png)
 
